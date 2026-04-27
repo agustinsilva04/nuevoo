@@ -26,5 +26,5 @@ jobs:
 
       - name: Ejecutar tests
         run: pytest -v
-	env:
-	  PYTHONPATH: .
+        env:
+          PYTHONPATH: .
