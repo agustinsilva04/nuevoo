@@ -1,10 +1,5 @@
-nombre = "Camila"
-apellido = "Dalto"
+def sumar(a, b):
+    return a + b
 
-saludo = "Hola "+ nombre + " " + apellido + " ¿Como estas?"
-print(saludo)
-<<<<<<< HEAD
-cambio desde DEV remoto
-=======
- cambio desde DEV B
->>>>>>> f83e (dev b: cambio en codigo)
+if __name__ == "__main__":
+    print(sumar(2, 3))
