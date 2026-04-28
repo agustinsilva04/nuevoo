@@ -1,4 +1,4 @@
-name: Python Tests
+name: Python CI
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  test:
+  quality:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,10 +21,16 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Instalar pytest
-        run: pip install pytest
+      - name: Instalar dependencias
+        run: pip install pytest flake8 black
 
       - name: Ejecutar tests
         run: pytest -v
         env:
           PYTHONPATH: .
+
+      - name: Ejecutar flake8
+        run: flake8 .
+
+      - name: Verificar formato con black
+        run: black --check .
