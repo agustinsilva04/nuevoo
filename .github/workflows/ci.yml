@@ -34,3 +34,13 @@ jobs:
 
       - name: Verificar formato con black
         run: black --check .
+
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repo
+        uses: actions/checkout@v4
+
+      - name: Build imagen Docker
+        run: docker build -t repo-uno .
