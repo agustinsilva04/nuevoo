@@ -35,6 +35,26 @@ jobs:
       - name: Verificar formato con black
         run: black --check .
 
+  publish:
+    runs-on: ubuntu-latest
+    needs: docker
+
+    steps:
+      - name: Clonar repo
+        uses: actions/checkout@v4
+
+      - name: Login Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build image
+        run: docker build -t agustin4/repo-uno:latest .
+
+      - name: Push image
+        run: docker push agustin4/repo-uno:latest
+
   docker:
     runs-on: ubuntu-latest
 
